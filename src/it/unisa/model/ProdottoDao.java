@@ -316,7 +316,7 @@ public synchronized void doUpdateQnt(int id, int qnt) throws SQLException {
 				preparedStatement.close();
 		} finally {
 			if (connection != null)
-				connection.close();
+				connection.close();;
 		}
 	}
 }
