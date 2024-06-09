@@ -16,7 +16,8 @@ public class UserBean implements Serializable {
 	}
 	
 	public void setNome(String nome) {
-		this.nome = nome;
+		this.nome = nome;;
+		
 	}
 	
 	public String getCognome() {
