@@ -34,7 +34,7 @@
 		</div>
 		<div class="tableRow">
 			<p>Email:</p>
-			<p><input type="text" id="em" name="email" placeholder="MarioRossi@gmail.com" onfocus="myFunction(this)" required/></p>	
+			<p><input type="text" id="em" name="email" required pattern = "^[\w\.-]+@[a-zA-Z\d\.-]+\.[a-zA-Z]{2,}$" placeholder="MarioRossi@gmail.com" onfocus="myFunction(this)" required/></p>	
 		</div>
 		<div class="tableRow">
 			<p></p>
