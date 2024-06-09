@@ -92,7 +92,7 @@
 						});
 					}
 				else{
-					$("#errUser").html("");
+					$("#errUser").html("");;
 				}
 
 			});
