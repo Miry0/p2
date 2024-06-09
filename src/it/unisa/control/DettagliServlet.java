@@ -19,22 +19,26 @@ public class DettagliServlet extends HttpServlet {
 	
 	
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		
-		ProdottoDao prodDao = new ProdottoDao();
-		
-		try {
-				int id = Integer.parseInt(request.getParameter("id"));
-				request.getSession().removeAttribute("product");
-				request.getSession().setAttribute("product", prodDao.doRetrieveByKey(id));
-			
-			
-		} catch (SQLException e) {
-			System.out.println("Error:" + e.getMessage());
-		}
-		
-		/*RequestDispatcher dispatcher = getServletContext().getRequestDispatcher("/Dettagli.jsp");
-		dispatcher.forward(request, response);*/
-		response.sendRedirect(request.getContextPath() + "/Dettagli.jsp");
+	    ProdottoDao prodDao = new ProdottoDao();
+
+	    try {
+	        String idParam = request.getParameter("id");
+	        if (idParam != null && idParam.matches("\\d+")) { // Verifica che id sia un intero positivo
+	            int id = Integer.parseInt(idParam);
+	            request.getSession().removeAttribute("product");
+	            request.getSession().setAttribute("product", prodDao.doRetrieveByKey(id));
+	        } else {
+	            // Id non è un intero valido, gestire di conseguenza
+	            // Ad esempio, reindirizzare l'utente a una pagina di errore o visualizzare un messaggio di errore
+	            // Qui puoi gestire il caso in cui il parametro id non sia un numero valido
+	        }
+	    } catch (SQLException e) {
+	        System.out.println("Error:" + e.getMessage());
+	    }
+
+	    /*RequestDispatcher dispatcher = getServletContext().getRequestDispatcher("/Dettagli.jsp");
+	    dispatcher.forward(request, response);*/
+	    response.sendRedirect(request.getContextPath() + "/Dettagli.jsp");
 	}
 
 	

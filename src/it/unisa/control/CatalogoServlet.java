@@ -26,7 +26,12 @@ public class CatalogoServlet extends HttpServlet {
 		ProdottoBean bean = new ProdottoBean();
 		String sort = request.getParameter("sort");
 		String action = request.getParameter("action");
-		String redirectedPage = request.getParameter("page");;
+		String redirectedPage = request.getParameter("page");
+		
+		if (!whitelist.isPageAllowed(redirectedPage)) {
+            response.sendError(HttpServletResponse.SC_BAD_REQUEST, "Invalid page parameter");
+            return;
+        }
 	
 		try {
 			if(action!=null) {
@@ -35,7 +40,7 @@ public class CatalogoServlet extends HttpServlet {
 					bean.setDescrizione(request.getParameter("descrizione"));
 					bean.setIva(request.getParameter("iva"));
 					bean.setPrezzo(Double.parseDouble(request.getParameter("prezzo")));
-					bean.setQuantità(Integer.parseInt(request.getParameter("quantità")));
+					bean.setQuantitÃ (Integer.parseInt(request.getParameter("quantitï¿½")));
 					bean.setPiattaforma(request.getParameter("piattaforma"));
 					bean.setGenere(request.getParameter("genere"));
 					bean.setImmagine(request.getParameter("img"));
@@ -52,7 +57,7 @@ public class CatalogoServlet extends HttpServlet {
 					bean.setDescrizione(request.getParameter("descrizione"));
 					bean.setIva(request.getParameter("iva"));
 					bean.setPrezzo(Double.parseDouble(request.getParameter("prezzo")));
-					bean.setQuantità(Integer.parseInt(request.getParameter("quantità")));
+					bean.setQuantitÃ (Integer.parseInt(request.getParameter("quantitï¿½")));
 					bean.setPiattaforma(request.getParameter("piattaforma"));
 					bean.setGenere(request.getParameter("genere"));
 					bean.setImmagine(request.getParameter("img"));

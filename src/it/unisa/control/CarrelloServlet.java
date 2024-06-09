@@ -30,9 +30,13 @@ public class CarrelloServlet extends HttpServlet{
 		}
 		
 		String action = request.getParameter("action");
-		String quantit‡ = request.getParameter("qnt");
+		String quantit√† = request.getParameter("qnt");
 		String redirectedPage = request.getParameter("page");
 		
+		if (!whitelist.isPageAllowed(redirectedPage)) {
+            response.sendError(HttpServletResponse.SC_BAD_REQUEST, "Invalid page parameter");
+            return;
+        }
 		
 		try {
 			if (action != null) {
@@ -45,10 +49,10 @@ public class CarrelloServlet extends HttpServlet{
 					
 				}
 			}
-				if(quantit‡!=null) {
+				if(quantit√†!=null) {
 					int id = Integer.parseInt(request.getParameter("Id"));
 					ItemCarrello item = cart.getItem(id);
-					item.setQuantit‡Carrello(Integer.parseInt(quantit‡));
+					item.setQuantit√†Carrello(Integer.parseInt(quantit√†));
 					
 				}
 			
